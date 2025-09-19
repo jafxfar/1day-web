@@ -6,8 +6,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/Navbar";
-import { Navbar as BottomBar } from "@/components/Atom";
+import { Header, Navbar } from "@/components/Atom/";
 
 interface Props {
   children: React.ReactNode;
@@ -45,11 +44,11 @@ export default function RootLayout(props: Props) {
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <Navbar />
+            <Header />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
-            <BottomBar />
+            <Navbar />
           </div>
         </Providers>
       </body>

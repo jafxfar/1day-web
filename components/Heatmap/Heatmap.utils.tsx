@@ -15,6 +15,8 @@ export interface ActivityData {
 export const heatmapUtils = () => {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+  const dayLabels = ["M", "T", "W", "T", "F", "S", "S"];
+
   const monthNames = [
     "Jan",
     "Feb",
@@ -92,6 +94,7 @@ export const heatmapUtils = () => {
 
   return {
     days,
+    dayLabels,
     monthNames,
     getIntensityColor,
     generateSampleData,

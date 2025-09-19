@@ -62,7 +62,10 @@ export function ActivityHeatmap() {
         </div>
 
         <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
-          <div className="flex items-center gap-2 text-xs sm:text-xs text-muted-foreground" aria-hidden>
+          <div
+            aria-hidden
+            className="flex items-center gap-2 text-xs sm:text-xs text-muted-foreground"
+          >
             <span className="sr-only">Activity intensity legend</span>
             <span>Less</span>
             <div className="flex gap-1">
