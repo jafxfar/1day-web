@@ -30,11 +30,12 @@ export function ActivityHeatmap() {
 
   return (
     <Card className="w-full max-w-4xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 pb-4">
         <h2 className="text-xl font-semibold">Activity</h2>
-        <div className="flex items-center gap-2">
+        <div className="w-full sm:w-auto flex items-center gap-2">
           <Select
-            className="w-32"
+            aria-label="Select activity view"
+            className="w-full sm:w-32"
             selectedKeys={[viewType]}
             size="sm"
             variant="bordered"
@@ -51,12 +52,18 @@ export function ActivityHeatmap() {
         </div>
       </CardHeader>
       <CardBody className="pt-0">
-        {viewType === "week" && <WeekView data={data} />}
-        {viewType === "month" && <MonthView data={data} />}
-        {viewType === "year" && <YearView data={data} />}
+        {/* Wrap views in a responsive container that can scroll horizontally on very small screens */}
+        <div className="w-full overflow-x-auto">
+          <div className="min-w-[320px] md:min-w-0">
+            {viewType === "week" && <WeekView data={data} />}
+            {viewType === "month" && <MonthView data={data} />}
+            {viewType === "year" && <YearView data={data} />}
+          </div>
+        </div>
 
         <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 text-xs sm:text-xs text-muted-foreground" aria-hidden>
+            <span className="sr-only">Activity intensity legend</span>
             <span>Less</span>
             <div className="flex gap-1">
               <div className="w-2.5 h-2.5 rounded-sm bg-muted border border-border/50" />

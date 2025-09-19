@@ -56,31 +56,33 @@ export const MonthView = (props: Props) => {
   }, [data]);
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="grid grid-cols-7 gap-1 text-xs text-muted-foreground mb-2">
+    <div className="w-full overflow-x-auto">
+      <div className="min-w-[280px] md:min-w-0 flex flex-col gap-2">
+        <div className="grid grid-cols-7 gap-1 text-xs text-muted-foreground mb-2">
         {days.map((day) => (
           <div key={day} className="text-center font-medium">
             {day}
           </div>
         ))}
       </div>
-      {monthData.map((week, weekIndex) => (
-        <div key={weekIndex} className="grid grid-cols-7 gap-1">
-          {week.map((item, dayIndex) => (
-            <div
-              key={`${weekIndex}-${dayIndex}`}
-              className={`w-6 h-6 rounded-sm ${
-                item.date ? getIntensityColor(item.count) : "bg-transparent"
-              } border border-border/30 hover:border-border transition-colors cursor-pointer`}
-              title={
-                item.date
-                  ? `${new Date(item.date).toLocaleDateString()}: ${item.count} activities`
-                  : ""
-              }
-            />
-          ))}
-        </div>
-      ))}
+        {monthData.map((week, weekIndex) => (
+          <div key={weekIndex} className="grid grid-cols-7 gap-1">
+            {week.map((item, dayIndex) => (
+              <div
+                key={`${weekIndex}-${dayIndex}`}
+                className={`w-5 sm:w-6 h-5 sm:h-6 rounded-sm ${
+                  item.date ? getIntensityColor(item.count) : "bg-transparent"
+                } border border-border/30 hover:border-border transition-colors cursor-pointer`}
+                title={
+                  item.date
+                    ? `${new Date(item.date).toLocaleDateString()}: ${item.count} activities`
+                    : ""
+                }
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
