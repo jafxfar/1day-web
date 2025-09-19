@@ -1,3 +1,10 @@
+/**
+ * Primitive UI styles
+ *
+ * Tailwind Variant helpers used across the app.
+ *
+ * @author JX
+ */
 import { tv } from "tailwind-variants";
 
 export const title = tv({
